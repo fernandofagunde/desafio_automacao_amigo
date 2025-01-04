@@ -1,0 +1,26 @@
+# Ignorar arquivos e diretórios gerados pelo Maven
+/target/
+
+# Ignorar configurações locais do IntelliJ IDEA
+.idea/
+*.iml
+
+# Ignorar arquivos gerados pelo sistema operacional
+.DS_Store
+
+# Ignorar arquivos compilados Java
+*.class
+
+# Ignorar logs e relatórios de teste
+*.log
+*.out
+*.tmp
+/test-output/
+
+# Ignorar arquivos temporários do Eclipse
+.project
+.classpath
+.settings/
+
+# Ignorar arquivos gerados pelo sistema operacional
+Thumbs.db
