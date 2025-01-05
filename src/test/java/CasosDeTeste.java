@@ -35,37 +35,28 @@ public class CasosDeTeste {
 
 	@Test
 	public void login_sucesso() {
-		paginaLogin.preencherUserName("standard_user");
-		paginaLogin.preencherPassword("secret_sauce");
-		paginaLogin.clicarLogin();
+		paginaLogin.efetuarLogin("standard_user", "secret_sauce");
 		assertEquals(paginaPrincipal.getText(), "Swag Labs");
 	}
 
 	@Test
 	public void login_erro() {
-		paginaLogin.preencherUserName("standard_user");
-		paginaLogin.preencherPassword("senha_errada");
-		paginaLogin.clicarLogin();
+		paginaLogin.efetuarLogin("standard_user", "senha_errada");
 		assertEquals(paginaLogin.getMensagemErroLogin(),
 				"Epic sadface: Username and password do not match any user in this service");
 	}
 
 	@Test
 	public void adicionar_produto_carrinho() {
-		paginaLogin.preencherUserName("standard_user");
-		paginaLogin.preencherPassword("secret_sauce");
-		paginaLogin.clicarLogin();
+		paginaLogin.efetuarLogin("standard_user", "secret_sauce");
 		paginaPrincipal.clicarBotaoAdicionarCarrinho();
 		paginaPrincipal.clicarIconeCarrinho();
-
 		assertEquals(paginaCarrinho.pegarNomeItemCarrinho(), "Sauce Labs Backpack");
 	}
 
 	@Test
 	public void remover_produto_carrinho() {
-		paginaLogin.preencherUserName("standard_user");
-		paginaLogin.preencherPassword("secret_sauce");
-		paginaLogin.clicarLogin();
+		paginaLogin.efetuarLogin("standard_user", "secret_sauce");
 		paginaPrincipal.clicarBotaoAdicionarCarrinho();
 		paginaPrincipal.clicarIconeCarrinho();
 		paginaCarrinho.clicarBotaoRemove();
@@ -75,9 +66,7 @@ public class CasosDeTeste {
 
 	@Test
 	public void fluxo_compra_completo() {
-		paginaLogin.preencherUserName("standard_user");
-		paginaLogin.preencherPassword("secret_sauce");
-		paginaLogin.clicarLogin();
+		paginaLogin.efetuarLogin("standard_user", "secret_sauce");
 		paginaPrincipal.clicarBotaoAdicionarCarrinho();
 		paginaPrincipal.clicarIconeCarrinho();
 		assertEquals(paginaCarrinho.pegarNumeroItensCarrinho(), 1);
@@ -95,9 +84,7 @@ public class CasosDeTeste {
 
 	@Test
 	public void filtragem_precos_low_high() {
-		paginaLogin.preencherUserName("standard_user");
-		paginaLogin.preencherPassword("secret_sauce");
-		paginaLogin.clicarLogin();
+		paginaLogin.efetuarLogin("standard_user", "secret_sauce");
 		paginaPrincipal.selecionarPrecoLowTohigh();
 		assertTrue(paginaPrincipal.validarPrecosEmOrdemCrescente());
 	}

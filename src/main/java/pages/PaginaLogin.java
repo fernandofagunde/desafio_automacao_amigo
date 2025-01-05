@@ -28,4 +28,10 @@ public class PaginaLogin extends PaginaBase {
 	public String getMensagemErroLogin() {
 		return driver.findElement(mensagemErroLogin).getText();
 	}
+
+	public void efetuarLogin(String userName, String password) {
+		preencherUserName(userName);
+		preencherPassword(password);
+		clicarLogin();
+	}
 }
