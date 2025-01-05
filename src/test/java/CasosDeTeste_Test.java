@@ -12,14 +12,14 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class CasosDeTeste {
+public class CasosDeTeste_Test {
 
 	private WebDriver driver;
 	private PaginaLogin paginaLogin;
 	private PaginaPrincipal paginaPrincipal;
 	private PaginaCarrinho paginaCarrinho;
-	private PaginaCheckOut checkOut;
-	private PaginaConfirmacao confirmacao;
+	private PaginaCheckOut paginaCheckOut;
+	private PaginaConfirmacao paginaConfirmacao;
 
 	@Before
 	public void setUp() throws Exception {
@@ -29,8 +29,8 @@ public class CasosDeTeste {
 		paginaLogin = new PaginaLogin(driver);
 		paginaPrincipal = new PaginaPrincipal(driver);
 		paginaCarrinho = new PaginaCarrinho(driver);
-		checkOut = new PaginaCheckOut(driver);
-		confirmacao = new PaginaConfirmacao(driver);
+		paginaCheckOut = new PaginaCheckOut(driver);
+		paginaConfirmacao = new PaginaConfirmacao(driver);
 	}
 
 	@Test
@@ -71,14 +71,14 @@ public class CasosDeTeste {
 		paginaPrincipal.clicarIconeCarrinho();
 		assertEquals(paginaCarrinho.pegarNumeroItensCarrinho(), 1);
 		paginaCarrinho.clicarBotaoCheckout();
-		checkOut.preencherCampoFirstName("Kent");
-		checkOut.preencherCampoLastName("Beck");
-		checkOut.preencherCampoPostalCode("55010590");
-		checkOut.clicarBotaoContinue();
-		assertEquals(confirmacao.pegarNumeroItensConfirmacao(), 1);
-		assertEquals(confirmacao.pegarValorTotal(), 32.39, 0.001);
-		confirmacao.clicarBotaoFinish();
-		assertEquals(confirmacao.pegarMensagemConfirmacao(), "Thank you for your order!");
+		paginaCheckOut.preencherCampoFirstName("Kent");
+		paginaCheckOut.preencherCampoLastName("Beck");
+		paginaCheckOut.preencherCampoPostalCode("55010590");
+		paginaCheckOut.clicarBotaoContinue();
+		assertEquals(paginaConfirmacao.pegarNumeroItensConfirmacao(), 1);
+		assertEquals(paginaConfirmacao.pegarValorTotal(), 32.39, 0.001);
+		paginaConfirmacao.clicarBotaoFinish();
+		assertEquals(paginaConfirmacao.pegarMensagemConfirmacao(), "Thank you for your order!");
 
 	}
 
